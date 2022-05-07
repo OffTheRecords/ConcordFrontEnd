@@ -1,21 +1,22 @@
 <template>
-  <div class="min-h-580 flex justify-center py-40">
-    <div class="bg-rose-600 w-480 py-20 px-32 text-lg rounded border-2 solid text-left">
-      <div class="flex flex-col">
-
-          <div class="mb-10">
-            <h5>Email</h5>
-            <input class="rounded border-2 solid px-1 py-1" type="text" id="Email" placeholder="someone@example.com"/>
+  <div class="flex items-center justify-center">
+    <div class="w-full max-w-md">
+      <form class="text-left tbg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4 mt-4">
+        <!-- @csrf -->
+          <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-normal mb-2" for="email">Email</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="email" type="email" v-model="email" required autofocus placeholder="someone@example.com"/>
           </div>
 
           <div class="mb-5">
-            <h5>Password</h5>
-            <input class="rounded border-2 solid px-1 py-1" type="password" id="password" placeholder="" />
+            <label class="block text-gray-700 text-sm font-normal mb-2" for="password">Password</label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" v-model="password" required autofocus placeholder="Password" />
           </div>
-            <button class="bg-purple-500 text-white active:bg-pink-600 font-bold uppercase 
-    text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none 
-    focus:outline-none mb-1 ease-linear transition-all duration-150" type="button">Log in</button>
-      </div>
+          <div class="flex items-center justify-between">
+            <button class="px-4 py-2 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-7000" type="button">Login</button>
+          </div>
+      </form>
+      <p class="text-center text-gray-500 text-xs">&copy;2022 Concord Corp. All rights reserved. </p>
     </div>
   </div>
 </template>
