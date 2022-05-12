@@ -1,8 +1,9 @@
 <template>
   <div class="flex items-center justify-center">
-    <div class="w-full max-w-md mt-30">
+    <img src="../assets/LeftWing.png">
+    <div class="w-full max-w-md mt-20">
       <form class="text-left bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4 mt-40 border">
-          <h1 class="text-center font-medium leading-tight text-5xl mb-2 text-[#facc15]">CONCORD</h1>
+          <img class="mb-8 mx-auto" src="../assets/FUCKDISCORD.png">
         <!-- @csrf -->
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-normal mb-2" for="email">Email</label>
@@ -24,6 +25,7 @@
       </form>
       <p class="text-center text-gray-500 text-xs">&copy;2022 Concord Corp. All rights reserved. </p>
     </div>
+    <img src="../assets/RightWing.png">
   </div>
 </template>
 
@@ -55,9 +57,9 @@ export default {
 
 
 
-      axios.post('http://127.0.0.1:8081/auth/register',this.registrationDetails, {headers: {
+      axios.post('https://concord.dafoe.me:8081/auth/register',this.registrationDetails, {headers: {
         'Content-type': 'application/json',
-      }}).then((res) =>{
+      }, withCredentials: true}).then((res) =>{
         console.log("Submitted successfully, success code: " + res.status)
         console.log(res)
       })

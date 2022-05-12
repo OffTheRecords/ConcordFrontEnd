@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="float-right">
     <router-link to="/">Login</router-link> |
     <router-link to="/register">Register</router-link>
   </nav>
@@ -23,7 +23,7 @@ nav {
     color: #2c3e50;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #facc15;
     }
   }
 }
