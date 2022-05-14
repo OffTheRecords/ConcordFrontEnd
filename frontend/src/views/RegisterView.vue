@@ -57,7 +57,7 @@ export default {
 
 
 
-      axios.post('https://concord.dafoe.me:8081/auth/register',this.registrationDetails, {headers: {
+      axios.post('https://concord.dafoe.me/auth/register',this.registrationDetails, {headers: {
         'Content-type': 'application/json',
       }, withCredentials: true}).then((res) =>{
         console.log("Submitted successfully, success code: " + res.status)

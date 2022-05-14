@@ -36,7 +36,7 @@ export default {
 
 
 
-      axios.post('https://concord.dafoe.me:8081/auth/login',this.loginDetails, {headers: {
+      axios.post('https://concord.dafoe.me/auth/login',this.loginDetails, {headers: {
         'Content-type': 'application/json',
       }, withCredentials: true}).then((res) =>{
         console.log("Submitted successfully, success code: " + res.status)
