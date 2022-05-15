@@ -24,6 +24,8 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
+import store from "@/store"
+import { mapMutations } from 'vuex'
 import axios from "axios"
 
 export default {
@@ -40,7 +42,7 @@ export default {
   },
   methods: {
     //Use map mutations to allow for vuex store editing
-   // ...mapMutations(["setUser", "setToken"]),
+    ...mapMutations(["setUser", "setToken"]),
     submitForm: function (email, password){
       this.loginDetails.email = email
       this.loginDetails.password = password
@@ -51,16 +53,18 @@ export default {
         'Content-type': 'application/json',
       }, withCredentials: true}).then((res) =>{
         console.log("Submitted successfully, success code: " + res.status)
-        console.log(res)
-        
+
+        var id = JSON.parse(res.data.msg)["id"]
+        //Either read cookiees or use mapmutations to store user and token values to enable login as default state (vuex storage)
+        store.commit('setUser', id)
+        console.log("Refresh to try again.")
+        this.$router.push('https://127.0.0.1:8080/home')
       })
       .catch((error) => {
         console.log(error)
         console.log("Failed to submit data with error code: " + error.status)
       }).finally(() =>{
-        //Either read cookiees or use mapmutations to store user and token values to enable login as default state (vuex storage)
-        console.log("Refresh to try again.")
-        this.$router.push('https://127.0.0.1:8080/home')
+        
       });
     }
   }

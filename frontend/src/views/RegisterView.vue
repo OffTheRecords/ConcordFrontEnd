@@ -34,6 +34,8 @@
 //import HelloWorld from '@/components/HelloWorld.vue'
 
 import axios from "axios"
+import store from "@/store"
+import { mapMutations } from 'vuex'
 
 
 export default {
@@ -50,6 +52,7 @@ export default {
   components: {
   },
   methods: {
+    ...mapMutations(["setUser", "setToken"]),
     submitForm: function (email, username, password){
       this.registrationDetails.email = email
       this.registrationDetails.username = username
@@ -62,6 +65,11 @@ export default {
       }, withCredentials: true}).then((res) =>{
         console.log("Submitted successfully, success code: " + res.status)
         console.log(res)
+        var id = JSON.parse(res.data.msg)["id"]
+        
+        //Either read cookiees or use mapmutations to store user and token values to enable login as default state (vuex storage)
+        store.commit('setUser', id)
+        this.$router.push('https://127.0.0.1:8080/home')
       })
       .catch((error) => {
         console.log(error)

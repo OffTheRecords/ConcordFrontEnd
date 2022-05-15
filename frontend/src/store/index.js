@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    user: null,
+    userid: null,
+    username: null,
     token: null,
   },
   getters: {
@@ -12,8 +13,11 @@ export default createStore({
     }
   },
   mutations: {
-    setUser(state, user){
-      state.user = user;
+    setUser(state, userid){
+      state.userid = userid;
+    },
+    setUsername(state, username){
+      state.username = username;
     },
     setToken(state,token){
       state.token = token;
