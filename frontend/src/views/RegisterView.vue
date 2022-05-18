@@ -78,10 +78,10 @@ export default {
           console.log(id)
 
           localStorage.setItem("userID", id)
-          jwtTTL = JSON.parse(res.data.msg)["JwtTTL"]
-          newTTL = jwtTTL + Math.round(Date.now() / 1000)
-          localStorage.setItem("JwtTokenTTL", string(newTTL))
-          
+          var jwtTTL = JSON.parse(res.data.msg)["JwtTTL"]
+          var newTTL = jwtTTL + Math.round(Date.now() / 1000)
+          localStorage.setItem("JwtTokenTTL", (newTTL).toString())
+
           this.$router.push('https://127.0.0.1:8080/home')
         }
         else{

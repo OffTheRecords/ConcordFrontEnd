@@ -9,7 +9,7 @@ export default createStore({
   getters: {
     isLoggedIn(state){
       //Enter code here to check token validity
-      if (Math.round(Date.now() / 1000) > parseInt(localStorage.getItem(JwtTokenTTL))){
+      if (Math.round(Date.now() / 1000) > parseInt(localStorage.getItem("JwtTokenTTL"))){
         return false
       } 
       else{

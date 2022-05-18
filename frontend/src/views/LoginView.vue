@@ -70,10 +70,10 @@ export default {
           var id = JSON.parse(res.data.msg)["id"]
           //Either read cookiees or use mapmutations to store user and token values to enable login as default state (vuex storage)
           localStorage.setItem("userID", id)
-          
-          jwtTTL = JSON.parse(res.data.msg)["JwtTTL"]
-          newTTL = jwtTTL + Math.round(Date.now() / 1000)
-          localStorage.setItem("JwtTokenTTL", string(newTTL))
+
+          var jwtTTL = JSON.parse(res.data.msg)["JwtTTL"]
+          var newTTL = jwtTTL + Math.round(Date.now() / 1000)
+          localStorage.setItem("JwtTokenTTL", (newTTL).toString())
 
           this.$router.push('https://127.0.0.1:8080/home')
         }
