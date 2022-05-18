@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center justify-center">
     <div class="w-full max-w-md">
-        <userName/>
+        <userName :key="username"/>
     </div>
   </div>
 </template>
@@ -36,7 +36,8 @@ export default {
       axios.get('https://concord.dafoe.me/user/' + store.state.userid).then((res) =>{
         console.log(res)
         var username = JSON.parse(res.data.msg)["username"]
-        store.commit('setUsername', username)
+        localStorage.setItem("username", username)
+                
       })
       .catch((error) => {
         console.log(error)

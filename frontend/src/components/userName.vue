@@ -1,15 +1,21 @@
 <script>
 import store from "@/store"
+import { mapState } from 'vuex'
 
 export default {
   data() {
     return {
-      username: store.state.username
+    }
+  },
+  computed:{
+    ...mapState(['username']),
+    loggedInUser(){
+      return localStorage.getItem("username")
     }
   }
 }
 </script>
 
 <template>
-  <h1>Welcome, {{ username }} !</h1>
+  <h1>Welcome, {{ loggedInUser }}!</h1>
 </template>

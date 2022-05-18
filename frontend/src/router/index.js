@@ -1,3 +1,5 @@
+import store from '@/store'
+
 import { createRouter, createWebHashHistory } from 'vue-router'
 import login from '../views/LoginView.vue'
 
@@ -25,6 +27,13 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+router.beforeEach(async(to, from) =>{
+  if (store.state.IsLogged && to.name !== 'Login'){
+    return { name: 'Login' }
+  }
+
 })
 
 export default router

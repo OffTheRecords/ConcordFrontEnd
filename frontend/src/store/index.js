@@ -4,12 +4,17 @@ export default createStore({
   state: {
     userid: null,
     username: null,
-    token: null,
+    tokenTTL: null,
   },
   getters: {
     isLoggedIn(state){
       //Enter code here to check token validity
-      return !!state.token;
+      if (Math.round(Date.now() / 1000) > parseInt(localStorage.getItem(JwtTokenTTL))){
+        return false
+      } 
+      else{
+        return true
+      }
     }
   },
   mutations: {
@@ -19,7 +24,7 @@ export default createStore({
     setUsername(state, username){
       state.username = username;
     },
-    setToken(state,token){
+    setJwtTokenTTL(state,token){
       state.token = token;
     },
   },
