@@ -1,3 +1,4 @@
+import { retrieveLocalCache } from '@/globalFunctions/retrieveLocalCache'
 import store from '@/store'
 
 import { createRouter, createWebHashHistory } from 'vue-router'
@@ -22,6 +23,11 @@ const routes = [
     name: 'home',
     component: () => import('../views/HomeView.vue')
   },
+  {
+    path: '/test',
+    name: 'test',
+    component: () => import('../views/TestSocketView.vue')
+  },
 ]
 
 const router = createRouter({
@@ -29,10 +35,15 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach(async(to, from) =>{
-  if (store.state.IsLogged && to.name !== 'Login'){
-    return { name: 'Login' }
+router.beforeEach((to, from) =>{
+  console.log(store.getters['isLoggedIn'])
+  if (!store.getters['isLoggedIn'] && (to.name !== 'login' && to.name !== 'register')){
+    return { name: 'login' }
   }
+  if (store.getters['isLoggedIn'] && (to.name === 'login' || to.name === 'register')){
+    return { name: 'home' }
+  }
+  retrieveLocalCache()
 
 })
 

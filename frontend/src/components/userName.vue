@@ -10,7 +10,7 @@ export default {
   computed:{
     ...mapState(['username']),
     loggedInUser(){
-      return localStorage.getItem("username")
+      return store.state.username
     }
   }
 }

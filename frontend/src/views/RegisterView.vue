@@ -76,11 +76,11 @@ export default {
         if (res.data.status == 200){
           var id = JSON.parse(res.data.msg)["id"]
           console.log(id)
-
-          localStorage.setItem("userID", id)
-          var jwtTTL = JSON.parse(res.data.msg)["JwtTTL"]
+          store.commit("setUser", id)
+          var jwtTTL = JSON.parse(res.data.msg)["jwtttl"]
           var newTTL = jwtTTL + Math.round(Date.now() / 1000)
-          localStorage.setItem("JwtTokenTTL", (newTTL).toString())
+          store.commit("setJwtTokenTTL", newTTL)
+
 
           this.$router.push('https://127.0.0.1:8080/home')
         }
