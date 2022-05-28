@@ -37,9 +37,12 @@ export default createStore({
     },
   },
   actions: {
-    async refreshToken (context, state){
-      if (state.jwtTTL <= Math.round(Date.now() / 1000) - 30){
-        axios.get('https://concord.dafoe.me/auth/refresh', {headers: {
+    async refreshToken (context){
+      console.log(context.state.jwtTTL)
+      console.log(Math.round(Date.now() / 1000) - 30)
+      console.log(context.state.jwtTTL >= Math.round(Date.now() / 1000) + 30)
+      if (context.state.jwtTTL >= Math.round(Date.now() / 1000) + 30){
+       await axios.get('https://concord.dafoe.me/auth/refresh', {headers: {
           'Content-type': 'application/json',
         }, withCredentials: true}).then((res) =>{
           console.log("Submitted refresh request, success code: " + res.status)
@@ -47,7 +50,7 @@ export default createStore({
           if (res.data.status == 200){
             var jwtTTL = JSON.parse(res.data.msg)["jwtttl"]
             var newTTL = jwtTTL + Math.round(Date.now() / 1000)
-            this.commit("setJwtTokenTTL", newTTL)
+            context.commit("setJwtTokenTTL", newTTL)
           }
         })
         .catch((error) => {

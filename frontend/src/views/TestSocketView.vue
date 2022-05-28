@@ -1,5 +1,6 @@
 <template>
   <div class="flex items-center justify-center">
+    <button class="px-4 py-2 rounded text-white inline-block shadow-lg bg-[#facc15] hover:bg-[#eab308]" type="button" v-on:click="changePage()">Home Page</button>
     <div class="w-full max-w-md">
         <h1>Server response:</h1>
         <h1> {{ messageChain }} </h1>
@@ -12,7 +13,7 @@
 <script>
 // @ is an alias to /src
 //import HelloWorld from '@/components/HelloWorld.vue'
-
+import router from "@/router";
 
 export default {
   name: 'HomeView',
@@ -32,6 +33,10 @@ export default {
       sendMessage: function(message){
           this.messageChain = this.messageChain + "User: " + message
           this.connection.send(message)
+      },
+      changePage: function(){
+        router.push('https://127.0.0.1:8080/home')
+
       }
 
   },
