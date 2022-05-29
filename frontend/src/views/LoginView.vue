@@ -72,7 +72,7 @@ export default {
           store.commit("setUser", id)
 
           var jwtTTL = JSON.parse(res.data.msg)["jwtttl"]
-          var newTTL = jwtTTL + Math.round(Date.now() / 1000) - 830
+          var newTTL = jwtTTL + Math.round(Date.now() / 1000)
           store.commit("setJwtTokenTTL", newTTL)
 
           this.$router.push('https://127.0.0.1:8080/home')
