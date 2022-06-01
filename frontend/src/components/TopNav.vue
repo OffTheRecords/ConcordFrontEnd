@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-  <div class="flex-1 bg-green-900 flex-col min-h-screen h-screen">
+  <div class="flex-1 bg-green-900 flex flex-col min-h-screen h-screen">
       <div class="bg-green-700 h-10 text-left px-2">
           <div class="flex flex-row justify-between">
             <div>

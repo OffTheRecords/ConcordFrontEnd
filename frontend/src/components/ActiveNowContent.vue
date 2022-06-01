@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-  <div class="bg-green-300 flex flex-col min-h-screen h-screen">
+  <div class="bg-green-300 flex flex-col">
     Active Now Content
   </div>
 </template>
