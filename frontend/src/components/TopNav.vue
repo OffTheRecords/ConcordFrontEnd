@@ -2,17 +2,22 @@
 import store from "@/store"
 import { mapState } from 'vuex'
 import contentBoxFriends from "@/components/ContentBoxFriends.vue";
+import contentBoxDM from "@/components/ContentBoxDM.vue";
 export default {
 
   data() {
     return {
-        contentType: "contentBoxFriends"
     }
   },
   computed:{
+    ...mapState(['contentType']),
+    contentType(){
+      return store.state.contentType
+    }
   },
   components:{
       contentBoxFriends: contentBoxFriends,
+      contentBoxDM: contentBoxDM,
   }
 }
 </script>

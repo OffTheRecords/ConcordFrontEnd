@@ -6,6 +6,8 @@ export default createStore({
     userid: null,
     username: null,
     jwtTTL: null,
+    contentType: "contentBoxFriends",
+    dmID: null,
   },
   getters: {
     isLoggedIn(state){
@@ -35,6 +37,13 @@ export default createStore({
       state.jwtTTL = ttl;
       localStorage.setItem("jwtTTL", (ttl).toString())
     },
+    setContentType(state, {content, id}){
+      console.log("Changing data into : " + content + " and " + id)
+      state.contentType = content
+      if (id != null){
+        state.dmID = id
+      }
+    }
   },
   actions: {
     async refreshToken (context){
