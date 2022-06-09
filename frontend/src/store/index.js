@@ -6,8 +6,10 @@ export default createStore({
     userid: null,
     username: null,
     jwtTTL: null,
-    contentType: "contentBoxFriends",
-    dmID: null,
+    contentType: "",
+    dmInfo: {},
+    directMessageState: [],
+    friendsList: [],
   },
   getters: {
     isLoggedIn(state){
@@ -37,13 +39,19 @@ export default createStore({
       state.jwtTTL = ttl;
       localStorage.setItem("jwtTTL", (ttl).toString())
     },
-    setContentType(state, {content, id}){
-      console.log("Changing data into : " + content + " and " + id)
+    setContentType(state, content){
+      console.log("Changing data into : " + content)
       state.contentType = content
-      if (id != null){
-        state.dmID = id
-      }
-    }
+    },
+    setDMBoxInfo(state, {id, username, display_pic}){
+      state.dmInfo = {id: id, username: username, display_pic: display_pic}
+    },
+    setDirectMessageState(state, DMState){
+      state.directMessageState = DMState
+    },
+    setFriendsListState(state, friendsList){
+      state.friendsList = friendsList
+    },
   },
   actions: {
     async refreshToken (context){

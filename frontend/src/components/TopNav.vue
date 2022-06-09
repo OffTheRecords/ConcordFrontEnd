@@ -10,9 +10,12 @@ export default {
     }
   },
   computed:{
-    ...mapState(['contentType']),
+    ...mapState(['contentType', 'dmInfo']),
     contentType(){
       return store.state.contentType
+    },
+    getDMBoxInfo(){
+      return store.state.dmInfo
     }
   },
   components:{
@@ -26,12 +29,15 @@ export default {
   <div class="flex-1 bg-green-900 flex flex-col min-h-screen h-screen">
       <div class="bg-green-700 h-10 text-left px-2">
           <div class="flex flex-row justify-between">
-            <div>
+            <div v-if="contentType == 'contentBoxFriends'">
                 Friends  |
                 <button class="mx-6">Online</button>
                 <button class="mx-6">All</button>
                 <button class="mx-6">Pending</button>
                 <button class="mx-6">Blocked</button>
+            </div>
+            <div v-if="contentType == 'contentBoxDM'">
+            {{ dmInfo["username"] }}
             </div>
             <div>
                 Accessory Buttons

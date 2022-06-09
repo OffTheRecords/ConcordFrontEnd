@@ -11,9 +11,8 @@ export default {
     }
   },
   computed:{
-      userID() {
-          return store.state.dmID
-
+      getDMInfo() {
+          return store.state.dmInfo
       }
   },
   components:{
@@ -26,7 +25,7 @@ export default {
   <div class="flex-1 bg-blue-500 flex justify-between">
     <div class="flex-1 text-left flex flex-col">
       <div>
-          {{ userName }} with ID: {{ userID }}
+        Test
       </div>
       <div>
       </div>

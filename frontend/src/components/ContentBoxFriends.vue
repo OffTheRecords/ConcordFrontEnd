@@ -8,15 +8,13 @@ export default {
   data() {
     return {
       SearchOption: "",
-       ids_list: [{id: '1001'}, {id: '1002'}, {id: '1003'}, {id: '1004'}, {id: '1005'}, {id: '1006'}],
 
     }
   },
   computed:{
-    onlineCount(){
-      //Retrieve List of Friends to display
-      return Object.keys(this.ids_list).length
-    }
+    friendsList(){
+      return store.state.friendsList
+    },
   },
   watch: {
     onlineCount(newVal) {
@@ -36,10 +34,10 @@ export default {
     <div class="flex-1 text-left flex flex-col">
       <input placeholder="Search" v-model="SearchOption">
       <div>
-        ONLINE - {{ onlineCount }}
+        ONLINE - 1
       </div>
       <div>
-        <friends v-for="user in ids_list" :key="user.id" :userID="user.id"></friends>
+        <friends v-for="user in friendsList" :key="user.id" :userInfo="user"></friends>
       </div>
     </div>
     <activeNowContent></activeNowContent>

@@ -10,26 +10,22 @@ export default {
     }
   },
   props:{
-      userID: Number,
+      userInfo: {
+          userID: Number,
+          statusExists: Boolean,
+          statusText: String,
+          userName: String,
+          status: String,
+      }
   },
   computed:{
-      userPhoto(){
-          //Retrieve user Photo
-          return null
-      },
-      userName(){
-          //Retrieve user name
-          return null
-      },
-      userStatus(){
-          if (this.userStatusExists == true){
-              return this.userStatusText
-          }
-          else{
-              return false
-          }
-          //Retrieve user status
-      },
+      retrieveUserInfo(){
+          console.log(this.userInfo)
+          return "worked"
+      }
+  },
+
+  methods: {
   }
 }
 </script>
@@ -41,9 +37,9 @@ export default {
                 <img class="rounded-full border border-gray-100" src="../assets/profile_picture.jpg" height="45" width="45">
             </div>
             <div class="flex flex-col">
-                <span name="Username" style="color:black">Artanthose: {{ userID }}</span>
-                <div v-if="userStatus">{{ userStatus }}</div>
-                <div v-else>Online</div>
+                <span name="Username" style="color:black"> {{ userInfo["username"] }}# {{ userInfo["userID"]}}</span>
+                <div v-if="userInfo['statusExists']">{{ userInfo["statusText"]}}</div>
+                <div v-else>{{ userInfo["status"]}}</div>
             </div>
         </div>
         <div name="userButtons" class="flex items-center">

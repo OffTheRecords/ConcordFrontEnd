@@ -5,17 +5,20 @@ import directMessageBox from "@/components/directMessageBox"
 export default {
   data() {
     return {
-        directMessageState: [
-            {id: '1', username: 'Artanthose', userID: 1001, statusExists: true, status: 'LongLongLongLongLongLongLongLongLongLongLongLongLongLong'},
-            {id: '2', username: 'Kanra', userID: 1002, statusExists: true, status: 'Short'  },
-            {id: '3', username: 'Alex', userID: 1003, statusExists: false, status: ''  },
-        ]
     }
   },
   computed:{
+      getDirectMsgState(){
+          return (store.state.directMessageState)
+      }
   },
   components: {
       directMessageBox: directMessageBox,
+  },
+  methods: {
+      changeContentType(content){
+          store.state.contentType = content
+      }
   }
 }
 </script>
@@ -27,12 +30,12 @@ export default {
         </div>
         <div class="flex-1 bg-blue-300 justify-between text-left">
             <div class="text-left mb-10 flex flex-none flex-col">
-                <button class="text-left mb-2">Friends</button>
+                <button class="text-left mb-2" @click="changeContentType('contentBoxFriends')">Friends</button>
                 <button class="text-left">Upgrade</button>
             </div>
             <div>
                 Direct Messages
-                <directMessageBox v-for="convo in directMessageState" :key="convo.id" :userStatusExists="convo.statusExists" :userStatusText="convo.status" :userName="convo.username" :userID="convo.userID"></directMessageBox>
+                <directMessageBox v-for="convo in getDirectMsgState" :key="convo.id" :userStatusExists="convo.statusExists" :userStatusText="convo.status" :userName="convo.username" :userID="convo.userID"></directMessageBox>
             </div>
         </div>
         <div>

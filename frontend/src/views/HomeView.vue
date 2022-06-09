@@ -49,6 +49,31 @@ export default {
         var username = JSON.parse(res.data.msg)["username"]
         console.log(username)
         store.commit("setUsername", username)
+
+        //RETRIEVE DIRECT MESSAGE STATE, SERVER-LIST (ICON, ID, NAME, NOT DETAILED INFO), FRIENDS-LIST W/ STATUS
+        //Push all this info to the STATE - retrieve where needed
+        //Acting like I got user info from server:
+
+        //Direct Message State
+        var directMessageState = [
+          {id: '1', username: 'Artanthose', userID: 1001, statusExists: true, status: 'LongLongLongLongLongLongLongLongLongLongLongLongLongLong'},
+          {id: '2', username: 'Kanra', userID: 1002, statusExists: true, status: 'Short'  },
+          {id: '3', username: 'Alex', userID: 1003, statusExists: false, status: ''  }]
+        store.commit("setDirectMessageState", directMessageState)
+
+        //Friends List State
+        var friendsList = [
+          {id: '1', username: 'Raff', userID: 1000, statusExists: true, statusText: 'Whats going on here', status: "Online"},
+          {id: '2', username: 'Kam', userID: 1001, statusExists: true, statusText: 'New phone who dis', status: "Online"},
+          {id: '3', username: 'Neyo', userID: 1002, statusExists: true, statusText: 'As above so below', status: "Online"},
+          {id: '4', username: 'Wade', userID: 1003, statusExists: true, statusText: 'Im just a kid', status: "Online"},
+          {id: '5', username: 'Yale', userID: 1004, statusExists: false, statusText: '', status: "Away"},
+        ]
+        store.commit("setFriendsListState", friendsList)
+
+        store.commit("setContentType", "contentBoxFriends")
+
+
         
       })
       .catch((error) => {

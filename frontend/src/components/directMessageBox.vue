@@ -12,10 +12,10 @@ export default {
           //Retrieve user Photo
           return null
       },
-      contentInfo(){
-          console.log("ID: " + this.userID)
-          return {content: "contentBoxDM", id: this.userID}
+      DMBoxInfo(){
+          return {id: this.userID, username: this.userName, display_pic: this.display_pic}
       }
+
   },
   props: {
         userStatusExists: {
@@ -35,7 +35,8 @@ export default {
 
           console.log('clicked DM Box');
           console.log(this.contentInfo)
-          store.commit('setContentType',this.contentInfo)
+          store.commit('setContentType', 'contentBoxDM')
+          store.commit('setDMBoxInfo', this.DMBoxInfo)
       }
   }
 }
