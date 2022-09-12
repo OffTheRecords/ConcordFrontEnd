@@ -35,6 +35,7 @@ export default {
                 <button class="mx-6">All</button>
                 <button class="mx-6">Pending</button>
                 <button class="mx-6">Blocked</button>
+                <button class="mx-6">Add</button>
             </div>
             <div v-if="contentType == 'contentBoxDM'">
             {{ dmInfo["username"] }}

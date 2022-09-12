@@ -73,6 +73,8 @@ export default {
 
         store.commit("setContentType", "contentBoxFriends")
 
+        
+
 
         
       })

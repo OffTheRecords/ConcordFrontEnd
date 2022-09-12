@@ -15,6 +15,22 @@ export default {
     friendsList(){
       return store.state.friendsList
     },
+    friendsListFiltered(){
+      if (this.SearchOption != ""){
+        console.log(this.friendsList)
+        var list = this.friendsList
+        var keyword = this.SearchOption
+        var filtered = list.filter(function(users){
+          return users.username.toLowerCase().includes(keyword.toLowerCase())
+        })
+        return filtered
+      }
+      else{
+        console.log(this.friendsList)
+        return this.friendsList
+      }
+
+    }
   },
   watch: {
     onlineCount(newVal) {
@@ -24,6 +40,11 @@ export default {
   components:{
     activeNowContent: ActiveNowContent,
     friends: FriendsListDisplay,
+  },
+  methods: {
+    filterCheck: function(){
+
+    }
   }
 
 }
@@ -36,8 +57,11 @@ export default {
       <div>
         ONLINE - 1
       </div>
-      <div>
+      <div v-if="SearchOption.length == 0">
         <friends v-for="user in friendsList" :key="user.id" :userInfo="user"></friends>
+      </div>
+      <div v-else>
+        <friends v-for="user in friendsListFiltered" :key="user.id" :userInfo="user"></friends>
       </div>
     </div>
     <activeNowContent></activeNowContent>
